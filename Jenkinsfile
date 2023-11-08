@@ -13,6 +13,7 @@ pipeline {
                 // Compile your Maven project
                 sh 'mvn clean install'
             }
+        }
         stage('Git') {
             
             steps {
