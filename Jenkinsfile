@@ -14,7 +14,6 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
-
         stage('Git') {
             
             steps {
