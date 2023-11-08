@@ -1,12 +1,12 @@
-https://github.com/mohamedjridipipeline {
+pipeline {
     agent any
 
     stages {
         stage('Git') {
             steps {
                 echo 'Getting project from Git'
-                  git "https://github.com/nadahassen/CI-project.git"
+                  git "https://github.com/mohamedjridi22/Devops.git"
             }
         }
-}
+    }
 }
