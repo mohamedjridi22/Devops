@@ -15,7 +15,8 @@ pipeline {
             
             steps {
                 echo 'Getting project from Git'
-                  git "https://github.com/mohamedjridi22/Devops.git"
+                git branch :'Sleh'  ,
+                url : 'https://github.com/mohamedjridi22/Devops.git'
             }
         }
         
