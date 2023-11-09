@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+
+  MySQL:
+    image: mysql
+    networks:
+      - mynetwork
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD:
+      MYSQL_DATABAE: stationSki
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql/data
+
+
+
+  devopsapp:
+    image: devopsapp
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8089:8089"
+    depends_on:
+      - MySQL
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://MySQL:3306/stationSki
+      - SPRING_PROFILES_ACTIVE=prod
+    networks:
+      - mynetwork
+
+
+
+networks:
+  mynetwork:
+    driver: bridge
+
+volumes:
+  mysql-data:
