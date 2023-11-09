@@ -1,25 +1,25 @@
 pipeline {
     agent any
+    tools{
+         maven 'M2_HOME'
+     }
 
     stages {
          stage('Checkout') {
-            steps {
+               steps {
                 // Check out your source code from your version control system (e.g., Git)
                 checkout scm
             }
-        }
-        stage('Build') {
-            steps {
-                // Compile your Maven project
-                sh 'mvn clean install'
-            }
-        }
+         }
         stage('Git') {
             
             steps {
                 echo 'Getting project from Git'
-                  git "https://github.com/mohamedjridi22/Devops.git"
+                git branch :'jridi'  ,
+                url : 'https://github.com/mohamedjridi22/Devops.git'
             }
         }
+
+
     }
 }
