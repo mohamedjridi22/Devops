@@ -19,7 +19,18 @@ pipeline {
                 url : 'https://github.com/mohamedjridi22/Devops.git'
             }
         }
-        
+
+        stage ('MVN clean'){
+            steps{
+                sh 'mvn clean';
+           }    
+        }
+       
+        stage('MVN compile'){
+            steps{
+                sh'mvn compile';
+            }
+        }
         
     }
 }
