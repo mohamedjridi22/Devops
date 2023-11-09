@@ -33,7 +33,7 @@ pipeline {
         }
         stage('MVN SONARQUBE') {
             steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=123123Abc? -Dmaven.test.skip=true';
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=touma_10828708 -Dmaven.test.skip=true';
             }
         }
 
