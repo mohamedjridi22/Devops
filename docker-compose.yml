@@ -2,12 +2,12 @@ version: '3.8'
 services:
 
   postgres:
-    image: postgres:latest
+    image: postgres
     networks:
       - mynetwork
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: root
+      POSTGRES_PASSWORD: 97818808
       POSTGRES_DB: devops
     ports:
       - "5433:5432"
