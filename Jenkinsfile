@@ -8,12 +8,6 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Build') {
-            steps {
-                // Compile your Maven project
-                sh 'mvn clean install'
-            }
-        }
         stage('Git') {
             
             steps {
@@ -21,5 +15,12 @@ pipeline {
                   git "https://github.com/mohamedjridi22/Devops.git"
             }
         }
+        stage('Build') {
+            steps {
+                // Compile your Maven project
+                sh 'mvn clean install'
+            }
+        }
+        
     }
 }
