@@ -34,7 +34,11 @@ pipeline {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=24930942mM -Dmaven.test.skip=true';
             }
         }
-
+         stage('MVN NEXUS') {
+            steps {
+                sh 'mvn deploy -Dmaven.test.skip=true';
+            }
+        }
 
     }
 }
