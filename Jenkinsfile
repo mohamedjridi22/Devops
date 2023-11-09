@@ -10,5 +10,12 @@ pipeline {
                 checkout scm
             }
          }
+        stage('Git') {
+            steps {
+                echo 'Getting project from Git'
+                git branch :'Yosra'  ,
+                url : 'https://github.com/mohamedjridi22/Devops.git'
+            }
+        }
     }
 }
