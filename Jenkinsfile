@@ -37,6 +37,15 @@ pipeline {
                 sh 'mvn deploy -Dmaven.test.skip=true';
             }
         }
+        stage('Building Docker image') {
+	   steps {
+                // Étape du build de l'image docker de l'application spring boot
+		 script {
+			// Generating image from Dockerfile
+			  sh 'docker build -t jesssser/kaddem-0.0.1.jar .'
+			}
+		 }
+	    }
         stage('Docker compose') {
             steps {
                 sh 'docker-compose -f docker-compose.yml up -d --build'
