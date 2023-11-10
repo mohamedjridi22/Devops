@@ -1,54 +1,40 @@
 pipeline {
     agent any
-    tools{
-         maven 'M2_HOME'
-     }
+    
+
+
+    environment {
+        NEXUS_VERSION = "nexus3"
+        NEXUS_PROTOCOL = "http"
+        NEXUS_URL = "192.168.33.10:8081"
+        SONAR_SERVER_URL = "http://192.168.33.10:9000/"
+        PROJECT_NAME = "devopsBackend"
+        PROJECT_KEY = "devopsBackend"
+        SONAR_USERNAME = "admin"
+        SONAR_PASSWORD = "123"
+        NEXUS_REPOSITORY = "Devops_Project"
+        DOCKER_IMAGE_NAME = "jridimohamed/springboot_devops:latest"
+        DOCKER_FRONT_IMAGE_NAME = "jridimohamed/devops_angular:latest"
+	
+    }
 
     stages {
-        stage('Checkout') {
+        stage('Checkout Backend code') {
             steps {
-                // Check out your source code from your version control system (e.g., Git)
-                checkout scm
+                checkout([$class: 'GitSCM', branches: [[name: '*/Fatma']], userRemoteConfigs: [[url: 'https://github.com/mohamedjridi22/Devops.git']]])
             }
         }
-        stage('Git') {
-            
+	 stage('Build') {
             steps {
-                echo 'Getting project from Git'
-                git branch :'Fatma'  ,
-                url : 'https://github.com/mohamedjridi22/Devops.git'
-            }
-        }
-       
-        
-
-        stage ('MVN clean'){
-            steps{
-                sh 'mvn clean';
-           }    
-        }
-       
-        stage('MVN compile'){
-            steps{
-                sh'mvn compile';
-            }
-        }
-       
-        stage('MVN SONARQUBE') {
-            steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=fatma10828708 -Dmaven.test.skip=true';
-            }
-        }
-         stage('Artifact') {
-            steps {
-                sh "mvn package"
+                sh 'mvn clean package -DskipTests'
             }
         }
 
-        stage('MVN NEXUS') {
+        stage('Test') {
             steps {
-                sh 'mvn deploy -Dmaven.test.skip=true';
+                echo 'hello'
             }
         }
     }
+	
 }
