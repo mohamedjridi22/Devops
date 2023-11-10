@@ -157,12 +157,5 @@ pipeline {
 	      
 
     }
-	post{
-        success{
-            mail to: "medalimouldi.1@gmail.com",
-	    from: "mouldi.mouhamed.ali@gmail.com",	    
-            subject: "project notification",
-            body: "pipline jenkins build succesful "
-        }
-    }
+	
 }
