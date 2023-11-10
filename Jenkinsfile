@@ -19,6 +19,18 @@ pipeline {
                 url : 'https://github.com/mohamedjridi22/Devops.git'
             }
         }
+        stage('Junit + Mockito Test') {
+			steps {
+				sh 'docker start mysql-database'
+				sh 'mvn test'
+			      } 
+		}
+		stage('Build Artifact - Maven') {
+			steps {
+				sh "mvn clean package -DskipTests=true"
+				archive 'target/*.jar'
+			      }
+		}
 
         stage ('MVN clean'){
             steps{
