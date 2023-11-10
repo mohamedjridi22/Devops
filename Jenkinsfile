@@ -39,6 +39,11 @@ pipeline {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=fatma10828708 -Dmaven.test.skip=true';
             }
         }
+         stage('Artifact') {
+            steps {
+                sh "mvn package"
+            }
+        }
 
         stage('MVN NEXUS') {
             steps {
