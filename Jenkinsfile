@@ -1,4 +1,7 @@
 pipeline {
+		environment { 
+        DOCKER_CREDENTIALS = credentials('docker')
+    }
     agent any
     tools{
          maven 'M2_HOME'
@@ -46,6 +49,19 @@ pipeline {
 			}
 		 }
 	    }
+	    stage('Deploying Docker image') {
+	   steps {
+                // Étape du deployment de l'image docker de l'application spring boot
+		 script {
+                    // Log in to Docker registry using credentials
+                           sh "docker login -u ${DOCKER_CREDENTIALS_USR} -p ${DOCKER_CREDENTIALS_PSW}"
+                    
+                    // Push Docker image
+                           sh 'docker push yosrasmida/gestion-station-ski-1.0.jar'
+                }
+	   	 }
+	     } 
+	
         stage('Docker compose') {
             steps {
                 sh 'docker-compose -f docker-compose.yml up -d --build'
