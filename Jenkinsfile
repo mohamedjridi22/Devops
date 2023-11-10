@@ -37,5 +37,10 @@ pipeline {
                 sh 'mvn deploy -Dmaven.test.skip=true';
             }
         }
+        stage('Docker compose') {
+            steps {
+                sh 'docker-compose -f docker-compose.yml up -d --build'
+            }
+        }
     }
 }
