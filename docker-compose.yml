@@ -24,9 +24,9 @@ services:
     ports:
       - "8089:8089"
     depends_on:
-      - MySQL
+      - postgres
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgres://postgres:5432/devops
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/devops
       - SPRING_PROFILES_ACTIVE=prod
     networks:
       - mynetwork
