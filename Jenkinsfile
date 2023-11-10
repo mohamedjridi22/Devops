@@ -1,4 +1,4 @@
-pipeline {
+²pipeline {
     agent any
     tools{
          maven 'M2_HOME'
@@ -20,11 +20,7 @@ pipeline {
             }
         }
        
-        stage('Artifact') {
-            steps {
-                sh "mvn package"
-            }
-        }
+        
 
         stage ('MVN clean'){
             steps{
@@ -35,6 +31,11 @@ pipeline {
         stage('MVN compile'){
             steps{
                 sh'mvn compile';
+            }
+        }
+        stage('Artifact') {
+            steps {
+                sh "mvn package"
             }
         }
         stage('MVN SONARQUBE') {
