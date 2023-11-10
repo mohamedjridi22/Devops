@@ -31,11 +31,11 @@ pipeline {
                 sh'mvn compile';
             }
         }
-        */stage('MVN SONARQUBE') {
+        /* stage('MVN SONARQUBE') {
             steps {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=123123Abc? -Dmaven.test.skip=true';
             }
-        }/*
+        }*/
 
         stage('MVN NEXUS') {
             steps {
