@@ -104,7 +104,7 @@ pipeline {
         stage('Docker Build') {
       steps {
           script {
-      	sh 'docker build -t dalidas/springboot_devops:latest .'
+      	sh 'docker build -t jridimohamed/springboot_devops:latest .'
       }
       }
     }
