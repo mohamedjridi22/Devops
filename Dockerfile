@@ -1,4 +1,4 @@
-FROM openjdk:8
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} myapp.jar
-ENTRYPOINT ["java","-jar","/myapp.jar"]
+FROM openjdk:11
+EXPOSE 8089
+ADD target/gestion-station-ski-1.0.jar gestion-station-ski-1.0.jar
+ENTRYPOINT ["java","-jar","/gestion-station-ski-1.0.jar"]
