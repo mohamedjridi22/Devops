@@ -49,6 +49,26 @@ pipeline {
                 }
             }
         }
+	         stage("Run SonarQube Analysis") {
+            steps {
+                script {
+                    withSonarQubeEnv('sonrserver') {
+                        def sonarUsername = "admin"
+                        def sonarPassword = "fatma10828708"
+
+                        withSonarQubeEnv(credentialsId: 'sonartoken') {
+                            sh """
+                                set +x
+                                mvn sonar:sonar -Dsonar.projectKey=devopsBackend
+                                set -x
+                            """
+                        }
+                        echo 'Static Analysis Completed'
+                    }
+                }
+            }
+        }
+	    
 	
 }
 }
