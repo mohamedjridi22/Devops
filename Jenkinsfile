@@ -11,10 +11,10 @@ pipeline {
         PROJECT_NAME = "devopsBackend"
         PROJECT_KEY = "devopsBackend"
         SONAR_USERNAME = "admin"
-        SONAR_PASSWORD = "123"
+        SONAR_PASSWORD = "fatma10828708"
         NEXUS_REPOSITORY = "Devops_Project"
-        DOCKER_IMAGE_NAME = "jridimohamed/springboot_devops:latest"
-        DOCKER_FRONT_IMAGE_NAME = "jridimohamed/devops_angular:latest"
+        DOCKER_IMAGE_NAME = "fatmabenabdelaziz/springboot_devops:latest"
+        DOCKER_FRONT_IMAGE_NAME = "fatmabenabdelaziz/devops_angular:latest"
 	
     }
 
@@ -35,6 +35,20 @@ pipeline {
                 echo 'hello'
             }
         }
-    }
+    
+		stage("Create SonarQube Project") {
+            steps {
+                script {
+                    def sonarServerUrl = "http://192.168.33.10:9000/"
+                    def projectName = "devopsBackend"
+                    def projectKey = "devopsBackend"
+
+                    sh """
+                        curl -X POST "${sonarServerUrl}/api/projects/create?name=${projectName}&project=${projectKey}"
+                    """
+                }
+            }
+        }
 	
+}
 }
