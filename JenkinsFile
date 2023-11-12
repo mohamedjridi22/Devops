@@ -32,6 +32,12 @@ pipeline {
             }
         }
 
+stage('MVN SONARQUBE') {
+            steps {
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=181JMT3056 -Dmaven.test.skip=true';
+            }
+        }
+
        
     }
 }
