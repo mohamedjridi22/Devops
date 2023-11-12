@@ -168,14 +168,12 @@ class SubscriptionServicesImplTest {
     }
     @Test
     void retrieveSubscriptionsAByDates(){
-        // Given
+
         LocalDate startDate = LocalDate.of(2023, 11, 9);
         LocalDate endDate = LocalDate.of(2024, 11, 9);
 
-        // When
         List<Subscription> retrievedSubscriptions = subscriptionService.retrieveSubscriptionsByDates(startDate, endDate);
 
-        // Then
         assertNotNull(retrievedSubscriptions, "Retrieved subscriptions list should not be null");
         assertEquals(1, retrievedSubscriptions.size(), "Number of retrieved subscriptions is incorrect");
     }
