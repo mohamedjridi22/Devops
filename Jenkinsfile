@@ -52,7 +52,7 @@ pipeline {
                 // Étape du build de l'image docker de l'application spring boot
 		 script {
 			// Generating image from Dockerfile
-			  sh 'docker build -t yosrasmida/gestion-station-ski-1.0.jar .'
+			  sh 'docker build -t slaheddinedamergi/gestion-station-ski-1.0.jar .'
 			}
 		 }
 	    }
