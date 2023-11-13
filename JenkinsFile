@@ -76,6 +76,7 @@ stage('Email Notfication'){
 		steps {
 			mail bcc: '', body: '" Build Successfully "', cc: '', from: '', replyTo: '', subject: 'Jenkins Notification', to: 'houssem.setti@esprit.tn'
 		}
+}
        
     }
 }
