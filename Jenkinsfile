@@ -1,5 +1,7 @@
 pipeline {
-		
+		environment { 
+        DOCKER_CREDENTIALS = credentials('fatima')
+    }
     agent any
     tools{
          maven 'M2_HOME'
