@@ -19,6 +19,7 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @FieldDefaults(level=AccessLevel.PRIVATE)
 @Entity
+@Table(name = "piste")
 public class Piste implements Serializable {
 
 	@Id
@@ -29,6 +30,10 @@ public class Piste implements Serializable {
 	Color color;
 	int length;
 	int slope;
+
+	public Piste(String namePiste) {
+		this.namePiste = namePiste;
+	}
 
 	@ManyToMany(mappedBy= "pistes")
 	Set<Skier> skiers;
