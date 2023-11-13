@@ -30,6 +30,14 @@ pipeline {
                 sh'mvn compile';
             }
         }
+	    	
+	    stage('Execute Tests') {
+            steps {
+                // Run the Maven clean command
+                script {
+                    sh 'mvn test -Dspring.profiles.active=test'
+		}
+            }	
           stage('MVN SONARQUBE') {
             steps {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar -Dmaven.test.skip=true';
