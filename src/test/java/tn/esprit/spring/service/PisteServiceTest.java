@@ -47,7 +47,7 @@ public class PisteServiceTest {
     }
 
     @Test
-    void getEtudiants() {
+    void getPistes() {
         List<Piste> list = new ArrayList<>();
         list.add(piste1);
         list.add(piste2);
