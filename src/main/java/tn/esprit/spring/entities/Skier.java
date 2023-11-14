@@ -28,6 +28,11 @@ public class Skier implements Serializable {
 	Long numSkier;
 	String firstName;
 	String lastName;
+
+	public Skier(String firstName) {
+		this.firstName = firstName;
+	}
+
 	LocalDate dateOfBirth;
 	String city;
 
