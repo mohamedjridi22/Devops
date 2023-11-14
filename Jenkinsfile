@@ -38,7 +38,7 @@ pipeline {
         }
 	stage('Test Junit/Mockito') {
             steps {
-                sh "mvn clean test"
+                sh 'mvn test';
             }
         }
         stage('MVN SONARQUBE') {
