@@ -36,6 +36,11 @@ pipeline {
                 sh'mvn compile';
             }
         }
+	stage('Test Junit/Mockito') {
+            steps {
+                sh "mvn clean test"
+            }
+        }
         stage('MVN SONARQUBE') {
             steps {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=123123Abc? -Dmaven.test.skip=true';
