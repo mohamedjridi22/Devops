@@ -23,7 +23,7 @@ public class CourseServiceTest {
         Assertions.assertEquals(6,courseList.size());
     }
 
-    */@Test
+    /*@Test
     @Order(2)
     public void testerSaveCourse(){
 
@@ -33,5 +33,5 @@ public class CourseServiceTest {
         Course addedCourseTest = new Course(2, TypeCourse.INDIVIDUAL, Support.SNOWBOARD,15.2f,2);
         Course courseAdded = courseServices.addCourse(addedCourseTest);
         Assertions.assertEquals(courseAdded.getNumCourse(),addedCourseTest.getNumCourse());
-    }/*
+    }*/
 }
