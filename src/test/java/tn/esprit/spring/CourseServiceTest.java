@@ -23,11 +23,15 @@ public class CourseServiceTest {
         Assertions.assertEquals(1,courseList.size());
     }
 
-   /* @Test
+    @Test
     @Order(2)
     public void testerSaveCourse(){
-        Course addedCourseTest = new Course(1L,2, TypeCourse.INDIVIDUAL, Support.SNOWBOARD,15.2f,2);
+
+
+
+
+        Course addedCourseTest = new Course(2, TypeCourse.INDIVIDUAL, Support.SNOWBOARD,15.2f,2);
         Course courseAdded = courseServices.addCourse(addedCourseTest);
         Assertions.assertEquals(courseAdded.getNumCourse(),addedCourseTest.getNumCourse());
-    }*/
+    }
 }
