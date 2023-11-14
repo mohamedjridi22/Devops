@@ -35,6 +35,15 @@ environment {
             }
         }
 
+stage('Execute Tests') {
+            steps {
+                // Run the Maven clean command
+                script {
+                    sh 'mvn test -Dspring.profiles.active=test'
+		}
+            }	
+        }
+
 stage('MVN SONARQUBE') {
             steps {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=181JMT3056 -Dmaven.test.skip=true';
