@@ -40,7 +40,7 @@ public class PisteRepositoryTest {
 
     @Test
     @DisplayName("It should return the students list with size of 2")
-    void getEtudiants() {
+    void getPistes() {
         pisteRepository.save(piste1);
         pisteRepository.save(piste2);
 
