@@ -31,18 +31,11 @@ environment {
 
        stage('MVN compile'){
             steps{
-                sh'mvn compile';
+                sh 'mvn compile';
             }
         }
 
-stage('Execute Tests') {
-            steps {
-                // Run the Maven clean command
-                script {
-                    sh 'mvn test -Dspring.profiles.active=test'
-		}
-            }	
-        }
+
 
 stage('MVN SONARQUBE') {
             steps {
@@ -80,6 +73,14 @@ stage('Building Docker image') {
             steps {
                 sh 'docker compose -f docker-compose.yml up -d --build'
             }
+        }
+stage('Execute Tests') {
+            steps {
+                // Run the Maven clean command
+                script {
+                    sh 'mvn test '
+		}
+            }	
         }
 stage('Email Notfication'){
 		steps {
