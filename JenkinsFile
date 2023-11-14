@@ -36,7 +36,14 @@ environment {
         }
 
 
-
+stage('Execute Tests') {
+            steps {
+                // Run the Maven clean command
+                script {
+                    sh 'mvn test -DskipTests'
+		}
+            }	
+        }
 stage('MVN SONARQUBE') {
             steps {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=181JMT3056 -Dmaven.test.skip=true';
@@ -74,14 +81,7 @@ stage('Building Docker image') {
                 sh 'docker compose -f docker-compose.yml up -d --build'
             }
         }
-stage('Execute Tests') {
-            steps {
-                // Run the Maven clean command
-                script {
-                    sh 'mvn test '
-		}
-            }	
-        }
+
 stage('Email Notfication'){
 		steps {
 			mail bcc: '', body: '" Build Successfully "', cc: '', from: '', replyTo: '', subject: 'Jenkins Notification', to: 'houssem.setti@esprit.tn'
