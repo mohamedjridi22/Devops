@@ -2,7 +2,7 @@ version: '3.8'
 services:
   # MySQL Database
   mysqldb:
-    image: mysql_database:latest
+    image: mysql:latest 
     ports:
       - 3307:3306
     environment:
@@ -15,8 +15,8 @@ services:
   # Backend SpringBoot
   gestion-station-ski-backend:
     depends_on:
-      - mysqldb
-    image: slaheddinedamergi/gestion-station-ski-1.0.jar:latest
+      - mysql:latest
+    image: stationski-backend
     ports:
       - 8089:8089
     environment:
