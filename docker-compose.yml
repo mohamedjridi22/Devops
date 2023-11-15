@@ -1,34 +1,24 @@
-version: '3.8'
+version: '3'
 services:
-  # MySQL Database
   mysqldb:
-    image: mysql:latest 
-    ports:
-      - 3307:3306
+    image: mysql:latest
     environment:
-      MYSQL_ROOT_PASSWORD:
-      MYSQL_DATABASE: devops
-      MYSQL_USER: root
-      MYSQL_PASSWORD:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=devops
+    ports:
+      - "3307:3306"     
     volumes:
       - db:/var/lib/mysql
-  # Backend SpringBoot
-  gestion-station-ski-backend:
+  backend:
     depends_on:
-      - mysql:latest
-    image: stationski-backend
-    build:
-      context: .
-      dockerfile: Dockerfile
+      - mysqldb
+    build: ./
+    restart: on-failure
     ports:
-      - 8089:8089
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/devops?createDatabaseIfNotExist=true
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=
-    volumes:
-      - .m2:/root/.m2
+      - "8089:8089"
     stdin_open: true
     tty: true
+    volumes:
+      - .m2:/root/.m2    
 volumes:
-  db :
+  db:
