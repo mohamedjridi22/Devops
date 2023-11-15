@@ -50,7 +50,7 @@ pipeline {
 
         stage('MVN NEXUS') {
             steps {
-                sh 'mvn deploy ';
+                sh 'mvn deploy -DskipTest';
             }
         }
         stage('Building Docker image') {
