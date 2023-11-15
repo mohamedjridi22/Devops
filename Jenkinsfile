@@ -44,13 +44,13 @@ pipeline {
         }
         stage('MVN SONARQUBE') {
             steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=123123Abc? -DskipTest';
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=123123Abc? -Dmaven.test.skip=true';
             }
         }
 
         stage('MVN NEXUS') {
             steps {
-                sh 'mvn deploy -DskipTest';
+                sh 'mvn deploy -Dmaven.test.skip=true';
             }
         }
         stage('Building Docker image') {
