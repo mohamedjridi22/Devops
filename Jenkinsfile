@@ -12,7 +12,6 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Check out your source code from your version control system (e.g., Git)
                 checkout scm
             }
         }
@@ -27,7 +26,7 @@ pipeline {
 
         stage ('MVN clean'){
             steps{
-                sh 'mvn clean -DskipTests';
+                sh 'mvn clean ';
            }    
         }
        
@@ -45,13 +44,13 @@ pipeline {
         }
         stage('MVN SONARQUBE') {
             steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=123123Abc? -Dmaven.test.skip=true';
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=123123Abc? ';
             }
         }
 
         stage('MVN NEXUS') {
             steps {
-                sh 'mvn deploy -Dmaven.test.skip=true';
+                sh 'mvn deploy ';
             }
         }
         stage('Building Docker image') {
